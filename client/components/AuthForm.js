@@ -1,9 +1,9 @@
-import React,  {Component} from 'react'
+import React, {Component} from 'react'
 
 class AuthForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '' }
+        this.state = {email: '', password: ''}
     }
 
     onSubmit(e) {
@@ -14,7 +14,7 @@ class AuthForm extends Component {
     render() {
         return (
             <div className='row'>
-                <form onSubmit={() => this.onSubmit()} className='col s6'>
+                <form onSubmit={(e) => this.onSubmit(e)} className='col s6'>
                     <div className='input-field'>
                         <label>Email</label>
                         <input
@@ -31,6 +31,10 @@ class AuthForm extends Component {
                             value={this.state.password}
                             onChange={(e) => this.setState({password: e.target.value})}
                         />
+                    </div>
+
+                    <div className='errors'>
+                        {this.props.errors.map(error => <div key={error}>{error}</div>)}
                     </div>
                     <button className='btn'>Submit</button>
                 </form>
